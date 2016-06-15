@@ -227,6 +227,13 @@ gulp.task('copy-sw-scripts', () => {
     .pipe(gulp.dest('dist/scripts/sw'));
 });
 
+var symlink = require('gulp-symlink');
+
+gulp.task('submodule', function(){
+  gulp.src('submodule/submodule.html')
+    .pipe(symlink('app/submodule.html'));
+});
+
 // See http://www.html5rocks.com/en/tutorials/service-worker/introduction/ for
 // an in-depth explanation of what service workers are and why you should care.
 // Generate a service worker file that will provide offline functionality for
