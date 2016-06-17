@@ -79,5 +79,104 @@
     });
   }
 
-  // Your custom JavaScript goes here
+
 })();
+
+
+document.querySelector('#form_credit_card').addEventListener('input', function (e) {
+    var foo = this.value.split("-").join("");
+    if (foo.length > 0) {
+        foo = foo.match(new RegExp('.{1,4}', 'g')).join("-");
+    }
+    this.value = foo;
+});
+
+document.querySelector('#form_expiration_date').addEventListener('input', function (e) {
+    var foo = this.value.split("/").join("");
+    if (foo.length > 0) {
+        foo = foo.match(new RegExp('.{1,2}', 'g')).join("/");
+    }
+    this.value = foo;
+});
+
+
+function showError(container, errorMessage) {
+
+      var msgElem = document.createElement('span');
+      msgElem.className = "error-message";
+      msgElem.innerHTML = errorMessage;
+      container.appendChild(msgElem);
+    }
+
+    function resetError(container) {
+    
+      if (container.lastChild.className == "error-message") {
+        container.removeChild(container.lastChild);
+      }
+    }
+
+    function validate(form) {
+      var result = false;
+      var elems = form.elements;
+      var isValidEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;  
+      var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
+      var isValidPhone =  /^([0-9\(\)\/\+ \-]*)$/;
+      var isValidCredit = /((?:(?:4\d{3})|(?:5[1-5]\d{2})|6(?:011|5[0-9]{2}))(?:-?|\040?)(?:\d{4}(?:-?|\040?)){3}|(?:3[4,7]\d{2})(?:-?|\040?)\d{6}(?:-?|\040?)\d{5})/;
+      var isNumbers = /^[0-9]+$/;
+      var isDate = /^\d{2}[.//]\d{2}$/;
+      resetError(elems.first_name.parentNode);
+      if (!elems.first_name.value) {
+        showError(elems.first_name.parentNode, 'Enter your First Name');
+      } 
+
+      resetError(elems.last_name.parentNode);
+      if (!elems.last_name.value) {
+        showError(elems.last_name.parentNode, 'Enter your Last Name');
+      }
+
+      resetError(elems.email.parentNode);
+      if (!elems.email.value.match(isValidEmail)) {
+        showError(elems.email.parentNode, 'Enter correct Email');
+
+      }
+
+      resetError(elems.country.parentNode);
+      if (!elems.country.value) {
+        showError(elems.country.parentNode, 'Fill this field');
+
+      }
+
+      resetError(elems.postal_code.parentNode);
+      if (!elems.postal_code.value.match(isValidZip)) {
+        showError(elems.postal_code.parentNode, 'Incorrect Postal Code');
+
+      }
+
+      resetError(elems.phone_number.parentNode);
+      if (!elems.phone_number.value.match(isValidPhone) || !elems.phone_number.value) {
+        showError(elems.phone_number.parentNode, 'Incorrect Phone Number');
+
+      }
+
+      resetError(elems.credit_card.parentNode);
+      if (!elems.credit_card.value.match(isValidCredit) || !elems.credit_card.value) {
+        showError(elems.credit_card.parentNode, 'Incorrect Credit Card Number');
+
+      }
+
+      resetError(elems.security_code.parentNode);
+      if (!elems.security_code.value.match(isNumbers) || elems.security_code.value.length>3) {
+        showError(elems.security_code.parentNode, 'Incorrect Security Code');
+
+      }
+      resetError(elems.expiration_date.parentNode);
+      if (!elems.expiration_date.value.match(isDate) || elems.expiration_date.value.length>5) {
+        showError(elems.expiration_date.parentNode, 'Enter valid date in MM/YY format');
+
+      }
+
+      if (!document.querySelector('.error-message')) {
+          alert('Verified');
+      }
+
+    }

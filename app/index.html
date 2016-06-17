@@ -67,14 +67,17 @@
           <a href="#features" class="mdl-layout__tab">Details</a>
           <a href="#features" class="mdl-layout__tab">Technology</a>
           <a href="#features" class="mdl-layout__tab">FAQ</a>
+          <a href="#checkout" class="mdl-layout__tab">Checkout</a>
           <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
             <i class="material-icons" role="presentation">add</i>
             <span class="visuallyhidden">Add</span>
           </button>
         </div>
       </header>
-      <main class="mdl-layout__content">
+      <main class="mdl-layout__content ">
+
         <div class="mdl-layout__tab-panel is-active" id="overview">
+
           <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
               <i class="material-icons">play_circle_filled</i>
@@ -172,6 +175,119 @@
             </div>
           </section>
         </div>
+
+        <div class="mdl-layout__tab-panel" id="checkout">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--8-col">
+              <h4>Checkout</h4>
+            </div>
+          </section>
+          <form class="form-rounded">
+            <section class="section--center mdl-grid mdl-grid--no-spacing">
+              <div class="mdl-cell mdl-cell--12-col">
+                <h5><span class="form-header-dot">1</span>Personal information</h5>
+              </div>
+              <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="form-row">       
+
+                  <div class="form-box">
+                    <input type="text" value="" id="form_first_name" name="first_name" class="required">
+                    <label for="form_first_name">First name</label>
+                  </div>
+                  <div class="form-box">
+                    <input type="text" value="" id="form_last_name" name="last_name" class="required">
+                    <label for="form_last_name">Last name</label>
+                  </div>
+                </div>
+                <div class="form-row form-row-full">
+                  <div class="form-box">
+                    <input type="text" value="" id="form_email" name="email" class="required">
+                    <label for="form_email">Email</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-box">
+                    <!-- <input type="hidden" id="form_country"> -->
+                    <div class="form-select">
+                      <select id="form_country" name="country" class="required">                      
+                        <option></option>
+                        <option value="1">Ukraine</option>
+                        <option value="2">Poland</option>
+                        <option value="3">Germany</option>
+                      </select>
+                    </div>
+                    <label for="form_country">Country</label>
+                  </div>
+                  <div class="form-box">
+                    <input type="text"  id="form_postal_code" name="postal_code" class="required">
+                    <label for="form_postal_code">Postal Code</label>
+                  </div>
+                </div>
+                <div class="form-row form-row-full">
+                  <div class="form-box">
+                    <input type="text" value="" id="form_phone_number" name="phone_number" class="required">
+                    <label for="form_phone_number">Phone number</label>
+                  </div>
+                </div>
+              </div>
+              <!-- Sidebar -->
+              <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="form-row form-row-full form-sidebar">
+                  <div class="form-box">
+                    <div class="form-container">
+                      <h5>Your order</h5>
+                      <div class="table">
+                        <ul>
+                          <li>Apple watch sport <span class="price">$ 580</span></li>
+                          <li>Modern buckle <span class="price">$ 380</span></li>
+                        </ul>
+                        <ul>
+                          <li>Total purchases <span class="price">$ 960</span></li>
+                          <li>Estimated tax <span class="price">$ 0</span></li>
+                        </ul>
+                        <ul class="total">
+                          <li>Total <span class="price">$ 960</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /Sidebar -->              
+              <div class="mdl-cell mdl-cell--8-col">
+                <h5><span class="form-header-dot">2</span>Payments details <span class="form-icon icon-lock"></span></h5>
+              </div>
+              <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="form-row form-row-full">
+                  <div class="form-box">
+                    <input type="text" placeholder="0000 - 0000 - 0000 - 0000" id="form_credit_card" name="credit_card" class="required">
+                    <span class="form-icon icon-credit-card"></span>
+                    <label for="form_credit_card">Credit card number</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-box">
+                    <input type="password" value="" id="form_security_code" name="security_code" class="required">
+                    <span class="form-icon icon-help" id="tooltip-security-code"></span>
+                    <div class="mdl-tooltip" for="tooltip-security-code">Your security code on the back of the Credit Card</div>
+                    <label for="form_security_code">Security code</label>
+                  </div>
+                  <div class="form-box">
+                    <input type="text" placeholder="MM / YY" id="form_expiration_date" name="expiration_date" class="required">
+                    <label for="form_expiration_date">Expiration date</label>
+                  </div>
+                </div>
+              </div>
+              <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="form-row form-row-full">
+                  <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect submit" onclick="validate(this.form)"><span class="info">Complete purchase</span></button>
+                </div>
+              </div>  
+            </section>
+          </form>
+        </div> 
+            
+
         <div class="mdl-layout__tab-panel" id="features">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
